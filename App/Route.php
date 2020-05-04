@@ -1,7 +1,6 @@
 <?php
 
 
-
 namespace App;
 
 use MF\Init\Bootstrap;
@@ -33,8 +32,6 @@ class Route extends Bootstrap {
 			'controller' => 'indexController',
 			'action' => 'consult_chamado'
 		);
-
-		
 
 		$this->setRoutes($routes);
 	}
