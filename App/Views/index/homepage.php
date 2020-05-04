@@ -48,7 +48,7 @@
                 </a>
               </div>
               <div class="col-2 d-flex justify-content-center">
-                <a href="/consult_chamado">
+                <a href="/adduser">
                   <img src="img/form_adduser.png" width="70" height="70">
                 </a>
               </div>
