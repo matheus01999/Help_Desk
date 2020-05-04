@@ -16,12 +16,15 @@
 
   <body>
 
-    <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
-        <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        App Help Desk
-      </a>
-    </nav>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="/homepage">
+      <img src="img/form_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+       Help Desk
+    </a>
+    <a class="navbar-brand" href="/homepage">
+      <img src="img/exit.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    </a>
+  </nav>
 
     <div class="container">    
       <div class="row">

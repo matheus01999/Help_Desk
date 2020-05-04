@@ -24,7 +24,6 @@
     </a>
     <a class="navbar-brand" href="/homepage">
       <img src="img/exit.png" width="30" height="30" class="d-inline-block align-top" alt="">
-       
     </a>
   </nav>
 
