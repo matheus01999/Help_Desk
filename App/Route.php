@@ -17,25 +17,25 @@ class Route extends Bootstrap {
 
 		$routes['homepage'] = array(
 			'route' => '/homepage',
-			'controller' => 'indexController',
+			'controller' => 'AppController',
 			'action' => 'homepage'
 		);
 
 		$routes['newchamado'] = array(
 			'route' => '/newchamado',
-			'controller' => 'indexController',
+			'controller' => 'AppController',
 			'action' => 'newchamado'
 		);
 
 		$routes['consult_chamado'] = array(
 			'route' => '/consult_chamado',
-			'controller' => 'indexController',
+			'controller' => 'AppController',
 			'action' => 'consult_chamado'
 		);
 
 		$routes['adduser'] = array(
 			'route' => '/adduser',
-			'controller' => 'indexController',
+			'controller' => 'AppController',
 			'action' => 'adduser'
 		);
 
@@ -43,6 +43,18 @@ class Route extends Bootstrap {
 			'route' => '/registrar',
 			'controller' => 'indexController',
 			'action' => 'registrar'
+		);
+
+		$routes['autenticar'] = array(
+			'route' => '/autenticar',
+			'controller' => 'AuthController',
+			'action' => 'autenticar'
+		);
+
+		$routes['sair'] = array(
+			'route' => '/sair',
+			'controller' => 'AuthController',
+			'action' => 'sair'
 		);
 
 

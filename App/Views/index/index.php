@@ -32,14 +32,21 @@
               Login
             </div>
             <div class="card-body">
-              <form>
+              <form method="post" action="/autenticar">
                 <div class="form-group">
-                  <input type="email" class="form-control" placeholder="E-mail">
+                  <input type="email" name="email" class="form-control" placeholder="E-mail">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Senha">
+                  <input type="password" name="senha" class="form-control" placeholder="Senha">
                 </div>
                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
+
+                <?php
+                if($this->view->login == 'erro'){?>
+                <span class="text text-danger">* email ou senha incorretos contate o administrador</span>
+                
+              <?php } ?>
+                
               </form>
             </div>
           </div>
