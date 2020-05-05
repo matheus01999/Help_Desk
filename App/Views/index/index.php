@@ -43,8 +43,8 @@
 
                 <?php
                 if($this->view->login == 'erro'){?>
-                <span class="text text-danger">* email ou senha incorretos contate o administrador</span>
-                
+                <span class="text text-danger">email ou senha incorretos contate o administrador</span>
+                }
               <?php } ?>
                 
               </form>
