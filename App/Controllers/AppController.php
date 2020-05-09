@@ -45,6 +45,15 @@ class AppController extends Action{
             header('Location: /?login=erro');
         }
     }
+
+    public function register_chamado(){
+        session_start();
+        if($_SESSION['id'] != '' && $_SESSION['nome'] != ''){
+            $this->render('register_chamado');
+        }else{
+            header('Location: /?login=erro');
+        }
+    }
 }
 
 

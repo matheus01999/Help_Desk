@@ -57,6 +57,12 @@ class Route extends Bootstrap {
 			'action' => 'sair'
 		);
 
+		$routes['register_chamado'] = array(
+			'route' => '/register_chamado',
+			'controller' => 'AppController',
+			'action' => 'register_chamado'
+		);
+
 
 
 		$this->setRoutes($routes);
