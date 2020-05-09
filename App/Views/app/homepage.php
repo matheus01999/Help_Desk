@@ -53,7 +53,7 @@
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="/homepage">
       <img src="img/form_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      Help Desk
+      Help Desk 
     </a>
     <a class="navbar-brand" href="/sair">
       <img src="img/exit.png" width="30" height="30" class="d-inline-block align-top" alt="">
