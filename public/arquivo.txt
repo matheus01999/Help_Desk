@@ -1,9 +1,3 @@
-print#Impressora#erro print
-print2#Impressora#erro print
-print3#Software#erro no totvs
-print3#Rede#dsadsad
-notebook nao liga#Impressora#fsdfdsgdsgfdsg
-teste4#Software#sou usuario
-#Criação Usuário#
-#Criação Usuário#
-cdsfds#Criação Usuário#hacks
+Internet#Hardware#meu teclado não esta funfando
+
+Internet#Hardware#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

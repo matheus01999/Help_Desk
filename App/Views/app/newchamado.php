@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col">
 
-          <form action="/register_chamado" method="POST">
+          <form  action='register_chamado'method="POST" >
             <div class="form-group">
               <label>Título</label>
               <input type="text" name="titulo" class="form-control" placeholder="Título">
@@ -45,7 +45,7 @@
               </div>
 
               <div class="col-6">
-                <button class="btn btn-lg btn-info btn-block" href="/homepage" type="submit">Abrir o chamado</button>
+                <button class="btn btn-lg btn-info btn-block" href="/register_chamado" type="submit">Abrir o chamado</button>
               </div>
             </div>
           </form>

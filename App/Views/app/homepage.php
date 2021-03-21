@@ -86,8 +86,8 @@
                 </a>
               </div>
               <div class="col-2 d-flex justify-content-center">
-              <a href="#" onclick="requisitarPagina('/adduser')"> 
-                  <img src="img/form_adduser.png" width="70" height="70">
+              <a href="#" onclick="requisitarPagina('/newnote')"> 
+                  <img src="img/form_notes.png" width="70" height="70">
                 </a>
               </div>
               <div class="col-2 d-flex justify-content-center">
@@ -105,6 +105,7 @@
                   <img src="img/form_config.png" width="70" height="70">
                 </a>
               </div>
+              
             </div>
           </div>
         </div>
@@ -113,55 +114,6 @@
     </div>
   </div>
 
-  <!-- 
-  <div class="container">
-    <div class="row">
-
-      <div class="card-home">
-        <div class="card">
-          <div class="card-header">
-            Menu
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-2 d-flex justify-content-center">
-                <a href="/newchamado">
-                  <img src="img/form_newchamado2.png" width="70" height="70">
-                </a>
-              </div>
-              <div class="col-2 d-flex justify-content-center">
-                <a href="/consult_chamado">
-                  <img src="img/form_consult_chamado.png" width="70" height="70">
-                </a>
-              </div>
-              <div class="col-2 d-flex justify-content-center">
-                <a href="/adduser">
-                  <img src="img/form_adduser.png" width="70" height="70">
-                </a>
-              </div>
-              <div class="col-2 d-flex justify-content-center">
-                <a href="/consult_chamado">
-                  <img src="img/form_newdevice.png" width="70" height="70">
-                </a>
-              </div>
-              <div class="col-2 d-flex justify-content-center">
-                <a href="/consult_chamado">
-                  <img src="img/form_dash.png" width="70" height="70">
-                </a>
-              </div>
-              <div class="col-2 d-flex justify-content-center">
-                <a href="/consult_chamado">
-                  <img src="img/form_config.png" width="70" height="70">
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  -->
 </body>
 
 </html>

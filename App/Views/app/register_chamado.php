@@ -1,23 +1,24 @@
 <?php
 
-$titulo = str_replace('#', '-', $_POST['titulo']);
-$categoria = str_replace('#', '-', $_POST['categoria']);
-$descricao = str_replace('#', '-', $_POST['descricao']);
-$arquivo = fopen('arquivo.txt', 'a');
 
+    //Montando o texto
+    $titulo = str_replace('#','-',$_POST['titulo']);
+    $categoria = str_replace('#','-',$_POST['categoria']);
+    $descricao = str_replace('#','-',$_POST['descricao']);
+    
+    //implode('#',$_POST);
+    $texto = $titulo.'#'.$categoria.'#'.$descricao. PHP_EOL;
+    
+    //http://php.net/manual/pt_BR/function.fopen.php
+    //Abrindo o arquivo
+    $arquivo = fopen('chamados.hd','a');
 
+    //Escrevendo texto no arquivo
+    fwrite($arquivo,$texto);
 
-$texto = $titulo .'#'. $categoria .'#'. $descricao . PHP_EOL;
+    //Fechando o arquivo
+    fclose($arquivo);
 
-fwrite($arquivo, $texto);
-
-fclose($arquivo);
-
-header('Location: /newchamado');
-
-
-
-
-
-
+    //echo $texto;
+    header('Location: homepage')
 ?>

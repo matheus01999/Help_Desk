@@ -20,10 +20,10 @@
             <div class="card-login">
                 <div class="card">
                     <div class="card-header">
-                        Login
+                        Adicionar Usuario
                     </div>
                     <div class="card-body">
-                        <form action="/registrar" method="POST">
+                        <form  method="POST">
                             <div class="form-group">
                                 <input type="nome" name="nome" class="form-control" placeholder="Nome Completo">
                             </div>
@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <input type="password" name="senha" class="form-control" placeholder="Senha">
                             </div>
-                            <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
+                            <button class="btn btn-lg btn-info btn-block" href='/salvar' type="submit">Salvar</button>
                         </form>
                     </div>
                 </div>

@@ -27,6 +27,12 @@ class Route extends Bootstrap {
 			'action' => 'newchamado'
 		);
 
+		$routes['newconfig'] = array(
+			'route' => '/newconfig',
+			'controller' => 'AppController',
+			'action' => 'newconfig'
+		);
+
 		$routes['consult_chamado'] = array(
 			'route' => '/consult_chamado',
 			'controller' => 'AppController',
