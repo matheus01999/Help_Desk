@@ -1,2 +1,1 @@
-# Chamados simplficado
-
+# GLPI Simplificado.
