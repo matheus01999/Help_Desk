@@ -2,12 +2,15 @@
 
 
 # Help Desk
-![pizza (2)](https://user-images.githubusercontent.com/50186745/165603035-79cddd0a-cf9a-4a5d-b37e-4970ec4f49e9.png)
 
-Sistema para o gerenciamnto de pizzarias 
+![support](https://user-images.githubusercontent.com/50186745/165615372-7a04e30d-9300-4256-82b0-675274ec53ca.png)
 
 
-<h1 align="center"> Pizzi </h1>
+
+Sistema de helpdesk para pequenas empresas
+
+
+<h1 align="center"> HDSB </h1>
 
 
 
@@ -15,11 +18,11 @@ Sistema para o gerenciamnto de pizzarias
     :computer: Tecnologias :computer:
 </h3>
     
-:white_check_mark: Javascript
+:white_check_mark: PHP
     
 :white_check_mark: CSS
     
-:white_check_mark: LocalStorage
+:white_check_mark: Mysql
     
 <h3 align="center"> 
     :construction:  Em Produção  :construction:
@@ -49,7 +52,7 @@ Sistema para o gerenciamnto de pizzarias
 
 ## :hammer: Funcionalidades 
 
-- `Pedidos` : Realizar os pedidos
+- `Listagem de chamado` : Cadastrar chamado
 
 
 
