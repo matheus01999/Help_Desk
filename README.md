@@ -31,20 +31,15 @@ Sistema de helpdesk para pequenas empresas
  
  <h4> Tecnologias </h4>
  
- :black_square_button: NodeJS
+ :black_square_button: 
  
- :black_square_button:Express
  
- :black_square_button:Mysql
  
  <h4>Featrures</h4>
  
  
- :black_square_button: Login Escalonavel
- 
- :black_square_button: Cadastro de Produtos
- 
- :black_square_button: Relatorio de Faturamento
+ :black_square_button: 
+
     
  
 
