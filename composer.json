@@ -1,5 +1,5 @@
 {
-    "name":"Framework_PHP",
+    "name":"dev/help",
     "require": {
         "php": ">= 7.0"
     },
