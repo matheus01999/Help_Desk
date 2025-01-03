@@ -10,11 +10,19 @@ Class View{
 
      }
 
-     public static function render($view){
+
+     // Métpdp responsavel por retornar o conteúdo de uma view
+     public static function render($view, $vars=[]){
 
           $contentView = self::getContentView($view);
 
-          return $contentView;
+          // Chaves do Array $vars
+          $keys = array_keys($vars);
+          $keys = array_map(function($item){
+               return '{{'.$item.'}}';
+          }, $keys);
+
+          return str_replace($keys,array_values($vars),$contentView) ;
           
      }
 }
