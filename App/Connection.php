@@ -8,8 +8,8 @@ class Connection {
 		try {
 
 			$conn = new \PDO(
-				"mysql:host=localhost;dbname=help_desk;charset=utf8",
-				"matheus",
+				"mysql:host=localhost;dbname=helpdsk;charset=utf8",
+				"oppo",
 				"60265146" 
 			);
 
