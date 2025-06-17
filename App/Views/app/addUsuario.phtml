@@ -1,45 +1,30 @@
-<?php  ?>
-<html>
 
-<head>
-    
-    <style>
-        .card-login {
-            padding: 30px 0 0 0;
-            width: 100%;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container">
+    <div class="container p-4">
         <div class="row">
-
-            <div class="card-login">
+            <div class="col">
                 <div class="card">
-                    <div class="card-header">
-                        Adicionar Usuario
-                    </div>
+                    <div class="card-header"> Adicionar Usuario</div>
                     <div class="card-body">
-                        <form  method="POST">
-                            <div class="form-group">
-                                <input type="nome" name="nome" class="form-control" placeholder="Nome Completo">
+                        <form method="post" action="/salvarUsuario">
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email">
                             </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="E-mail">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Senha</label>
+                                <input type="password" class="form-control" name="senha">
                             </div>
-                            <div class="form-group">
-                                <input type="password" name="senha" class="form-control" placeholder="Senha">
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
-                            <button class="btn btn-lg btn-info btn-block" href='/salvar' type="submit">Salvar</button>
+                            <button type="submit" class="btn btn-primary">Entrar</button>
+                            <? if ($this->view->login == 'erro') { ?>
+                                <span class="text text-danger">email ou senha incorretos contate o administrador</span>
+                            <?php } ?>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-</body>
-
-</html>
-<?php  ?>
+    </div>
