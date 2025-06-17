@@ -69,6 +69,20 @@ class Route extends Bootstrap {
 			'action' => 'register_chamado'
 		);
 
+		// Rotas do Usuario 
+
+		$routes['addUsuario'] = array( //Rota responsavel pela renderização da View para adicionar o usuario
+			'route' => '/addUsuario',
+			'controller' => 'AppController',
+			'action' => 'addUsuario'
+		);
+
+		$routes['salvarUsuario'] = array( //Rota responsavel por salvar o usuario
+			'route' => '/salvarUsuario',
+			'controller' => 'AppController',
+			'action' => 'salvarUsuario'
+		);
+
 
 
 		$this->setRoutes($routes);
