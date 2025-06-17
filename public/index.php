@@ -1,6 +1,6 @@
 <?php
 
-	//ini_set('error_reporting', 'E_STRICT');
+	// Script Entry Point 
 
 	require_once "../vendor/autoload.php";
 
