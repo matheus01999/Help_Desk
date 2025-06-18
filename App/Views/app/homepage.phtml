@@ -42,63 +42,74 @@
 <? } ?>
 
 
+<? if (!empty($this->view->chamados)) { ?>
 
-<div class="row p-4">
-  <div class="col">
-    <div class="alert alert-primary" role="alert">
-      <strong>Chamados</strong>
-    </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Solicitante</th>
-          <th scope="col">Titulo</th>
-          <th scope="col">Categoria</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <? foreach ($this->view->chamados as $id_chamado => $chamado) { ?>
+  <div class="row p-4">
+    <div class="col">
+      <div class="alert alert-primary" role="alert">
+        <strong>Chamados</strong>
+      </div>
+      <table class="table">
+        <thead>
           <tr>
-            <th scope="row"><?= $chamado['id'] ?></th>
-            <td><?= $chamado['nome'] ?></td>
-            <td><?= $chamado['titulo'] ?></td>
-            <td><?= $chamado['categoria'] ?></td>
-            <td><a href="/excluirChamado?id=<?=$chamado['id']?>" class="btn btn-danger">Excluir</a></td>
-            <td><a href="/editar?<?=$chamado['id']?>" class="btn btn-success">Editar</a></td>
+            <th scope="col">ID</th>
+            <th scope="col">Solicitante</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Categoria</th>
+            <th></th>
+            <th></th>
           </tr>
-        <? } ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <? foreach ($this->view->chamados as $id_chamado => $chamado) { ?>
+            <tr>
+              <th scope="row"><?= $chamado['id'] ?></th>
+              <td><?= $chamado['nome'] ?></td>
+              <td><?= $chamado['titulo'] ?></td>
+              <td><?= $chamado['categoria'] ?></td>
+              <td><a href="/excluirChamado?id=<?= $chamado['id'] ?>" class="btn btn-danger">Excluir</a></td>
+              <td><a href="/editar?<?= $chamado['id'] ?>" class="btn btn-success">Editar</a></td>
+            </tr>
+          <? } ?>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 
-<div class="row p-4">
-  <div class="col">
-    <div class="alert alert-primary" role="alert">
-      <strong>Usuarios</strong>
-    </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Email</th>
-          <th scope="col">Nivel</th>
-        </tr>
-      </thead>
-      <tbody>
-        <? foreach ($this->view->usuarios as $id_usuario => $usuario) { ?>
+<? } ?>
+
+<? if (!empty($this->view->usuarios)) { ?>
+
+  <div class="row p-4">
+    <div class="col">
+      <div class="alert alert-primary" role="alert">
+        <strong>Usuarios</strong>
+      </div>
+      <table class="table">
+        <thead>
           <tr>
-            <th scope="row"><?= $chamado['id'] ?></th>
-            <td><?= $usuario['nome'] ?></td>
-            <td><?= $usuario['email'] ?></td>
-            <td>definir</td>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Nivel</th>
           </tr>
-        <? } ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <? if (isset($this->view->usuarios)) { ?>
+            <? foreach ($this->view->usuarios as $id_usuario => $usuario) { ?>
+              <tr>
+                <th scope="row"><?= $usuario['id'] ?></th>
+                <td><?= $usuario['nome'] ?></td>
+                <td><?= $usuario['email'] ?></td>
+                <td>definir</td>
+              </tr>
+            <? } ?>
+
+          <? } ?>
+
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+
+<? } ?>

@@ -15,9 +15,16 @@ class AppController extends Action
 
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
 
+            //intancia do smodelos
             $chamado = Container::getModel('Chamado');
             $usuario = Container::getModel('Usuario');
 
+            //validar se tem algum chamado 
+            
+
+            //validar se tem algum usuario
+
+            //recuperar usuarios e chamados 
             $this->view->usuarios = $usuario->listar();
             $this->view->chamados = $chamado->listar();
             $this->render('homepage'); //Homepage do usuario 
