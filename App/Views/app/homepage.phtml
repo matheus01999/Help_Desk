@@ -27,7 +27,11 @@
     </div>
   </div>
 </nav>
-<? if (isset($this->view->Usuario_salvo) && $this->view->Usuario_salvo) { ?>
+<?
+
+use App\Models\Chamado;
+
+ if (isset($this->view->Usuario_salvo) && $this->view->Usuario_salvo) { ?>
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Usuario</strong> cadastrado com sucesso
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -68,13 +72,56 @@
               <td><?= $chamado['titulo'] ?></td>
               <td><?= $chamado['categoria'] ?></td>
               <td><a href="/excluirChamado?id=<?= $chamado['id'] ?>" class="btn btn-danger">Excluir</a></td>
-              <td><a href="/editar?<?= $chamado['id'] ?>" class="btn btn-success">Editar</a></td>
+              <td><a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarChamado<?= $chamado['id'] ?>">Editar</a></td>
             </tr>
-          <? } ?>
-        </tbody>
-      </table>
+            <!-- Modal para edição de chamado -->
+            <div class="modal fade" id="editarChamado<?= $chamado['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Chamado: <?= $chamado['id'] ?></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form action='/salvarChamado' method="POST">
+                      <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" name="titulo" class="form-control" value="<?=$chamado['titulo']?>">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Categoria</label>
+                        <select class="form-control" name="categoria" >
+                          <option>Criação Usuário</option>
+                          <option>Impressora</option>
+                          <option>Hardware</option>
+                          <option>Software</option>
+                          <option>Rede</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group ">
+                        <label>Descrição</label>
+                        <textarea class="form-control" name="descricao" rows="3"></textarea>
+                      </div>
+                      <div class="p-4">
+                        <a type="submit" href="/homepage" class="btn btn-primary">Voltar</a>
+                        <button class="btn btn-success btn-block" type="submit" style="float: right;">Editar</button>
+                      </div>
+                  </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
     </div>
-  </div>
+  <? } ?>
+  </tbody>
+  </table>
+
 
 <? } ?>
 
@@ -103,6 +150,7 @@
                 <td><?= $usuario['email'] ?></td>
                 <td>definir</td>
               </tr>
+
             <? } ?>
 
           <? } ?>

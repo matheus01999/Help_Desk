@@ -53,6 +53,10 @@ class Chamado extends Model {
 		$stmt->execute();
 	}
 
+	public function editar(){
+		
+	}
+
 
 }
 

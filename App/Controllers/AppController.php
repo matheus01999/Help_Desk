@@ -19,11 +19,6 @@ class AppController extends Action
             $chamado = Container::getModel('Chamado');
             $usuario = Container::getModel('Usuario');
 
-            //validar se tem algum chamado 
-            
-
-            //validar se tem algum usuario
-
             //recuperar usuarios e chamados 
             $this->view->usuarios = $usuario->listar();
             $this->view->chamados = $chamado->listar();
@@ -60,7 +55,6 @@ class AppController extends Action
             // Trabalhar em uma validação 
 
             $chamado->salvar();
-            $this->view->Chamado_salvo = true;
             $this->render('homepage');
         }else {
             header('Location: /?login=erro');
@@ -78,6 +72,10 @@ public function excluirChamado(){
             header('Location: /homepage?excluirChamado = true');
         }
     
+}
+
+public function editarChamado(){
+
 }
 
 

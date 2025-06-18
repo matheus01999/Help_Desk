@@ -56,16 +56,22 @@ class Route extends Bootstrap {
 			'action' => 'addChamado'
 		);
 
-		$routes['salvarChamado'] = array( //Rota responsavel pela renderização da View para adicionar o usuario
+		$routes['salvarChamado'] = array( //salvar usuario usuario no banco
 			'route' => '/salvarChamado',
 			'controller' => 'AppController',
 			'action' => 'salvarChamado'
 		);
 
-		$routes['excluirChamado'] = array( //Rota responsavel pela renderização da View para adicionar o usuario
+		$routes['excluirChamado'] = array( //excluir usuario usuario no banco
 			'route' => '/excluirChamado',
 			'controller' => 'AppController',
 			'action' => 'excluirChamado'
+		);
+
+		$routes['editarChamado'] = array( //editar usuario usuario no banco
+			'route' => '/editarChamado',
+			'controller' => 'AppController',
+			'action' => 'editarChamado'
 		);
 
 
