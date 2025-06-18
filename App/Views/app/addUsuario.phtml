@@ -1,0 +1,37 @@
+<? if (isset($this->view->erroCadastro) && $this->view->erroCadastro) { ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Erro</strong> durante o cadastro valide os campos.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<? } ?>
+
+
+
+<div class="container p-4">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header"> Adicionar Usuario</div>
+                <div class="card-body">
+                    <form method="post" action="/salvarUsuario">
+                        <div class="mb-3">
+                            <label class="form-label">Nome</label>
+                            <input type="text" class="form-control" name="nome">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Senha</label>
+                            <input type="password" class="form-control" name="senha">
+                        </div>
+                        <a type="submit" href="/homepage" class="btn btn-primary">Voltar</a>
+                        <button type="submit" class="btn btn-success" style="float: right;">Salvar</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -21,35 +21,6 @@ class Route extends Bootstrap {
 			'action' => 'homepage'
 		);
 
-		$routes['newchamado'] = array(
-			'route' => '/newchamado',
-			'controller' => 'AppController',
-			'action' => 'newchamado'
-		);
-
-		$routes['newconfig'] = array(
-			'route' => '/newconfig',
-			'controller' => 'AppController',
-			'action' => 'newconfig'
-		);
-
-		$routes['consult_chamado'] = array(
-			'route' => '/consult_chamado',
-			'controller' => 'AppController',
-			'action' => 'consult_chamado'
-		);
-
-		$routes['adduser'] = array(
-			'route' => '/adduser',
-			'controller' => 'AppController',
-			'action' => 'adduser'
-		);
-
-		$routes['registrar'] = array(
-			'route' => '/registrar',
-			'controller' => 'indexController',
-			'action' => 'registrar'
-		);
 
 		$routes['autenticar'] = array(
 			'route' => '/autenticar',
@@ -63,11 +34,47 @@ class Route extends Bootstrap {
 			'action' => 'sair'
 		);
 
-		$routes['register_chamado'] = array(
-			'route' => '/register_chamado',
+		// Rotas do Usuario 
+
+		$routes['addUsuario'] = array( //Rota responsavel pela renderização da View para adicionar o usuario
+			'route' => '/addUsuario',
 			'controller' => 'AppController',
-			'action' => 'register_chamado'
+			'action' => 'addUsuario'
 		);
+
+		$routes['salvarUsuario'] = array( //Rota responsavel por salvar o usuario
+			'route' => '/salvarUsuario',
+			'controller' => 'AppController',
+			'action' => 'salvarUsuario'
+		);
+
+		//Rotas de Chamado
+
+		$routes['addChamado'] = array( //Rota responsavel pela renderização da View para adicionar o usuario
+			'route' => '/addChamado',
+			'controller' => 'AppController',
+			'action' => 'addChamado'
+		);
+
+		$routes['salvarChamado'] = array( //salvar usuario usuario no banco
+			'route' => '/salvarChamado',
+			'controller' => 'AppController',
+			'action' => 'salvarChamado'
+		);
+
+		$routes['excluirChamado'] = array( //excluir usuario usuario no banco
+			'route' => '/excluirChamado',
+			'controller' => 'AppController',
+			'action' => 'excluirChamado'
+		);
+
+		$routes['editarChamado'] = array( //editar usuario usuario no banco
+			'route' => '/editarChamado',
+			'controller' => 'AppController',
+			'action' => 'editarChamado'
+		);
+
+
 
 
 
