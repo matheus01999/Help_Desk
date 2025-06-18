@@ -7,6 +7,7 @@ use MF\Model\Model;
 class Chamado extends Model {
 
 	private $id;
+	private $id_usuario;
 	private $titulo;
 	private $categoria;
 	private $descricao;
@@ -22,14 +23,27 @@ class Chamado extends Model {
 	//salvar
 	public function salvar() {
 
-		$query = "insert into chamados(titulo, categoria, descricao)values(:titulo, :categoria, :descricao)";
+		$query = "insert into chamados(id_usuario, titulo, categoria, descricao)values(:id_usuario, :titulo, :categoria, :descricao)";
 		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
 		$stmt->bindValue(':titulo', $this->__get('titulo'));
 		$stmt->bindValue(':categoria', $this->__get('categoria'));
 		$stmt->bindValue(':descricao', $this->__get('descricao')); 
 		$stmt->execute();
 
 		return $this;
+	}
+
+	public function listar(){
+		$query = "select c.id, c.id_usuario, u.nome, c.titulo, c.categoria, c.descricao 
+					from 
+					chamados as c
+					left join usuarios as u on (c.id_usuario = u.id)";
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
 	}
 
 

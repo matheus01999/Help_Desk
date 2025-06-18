@@ -14,6 +14,9 @@ class AppController extends Action
         session_start();
 
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
+
+            $chamado = Container::getModel('Chamado');
+            $this->view->chamados = $chamado->listar();
             $this->render('homepage'); //Homepage do usuario 
         } else {
             header('Location: /?login=erro');
@@ -35,20 +38,24 @@ class AppController extends Action
 
     public function salvarChamado()
     { // Metodo responsavel por salvar o chamado no banco
+            session_start();
+        if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
+            $chamado = Container::getModel('Chamado');
 
-        $chamado = Container::getModel('Chamado');
+            $chamado->__set('id_usuario', $_SESSION['id']);
+            $chamado->__set('titulo', $_POST['titulo']);
+            $chamado->__set('categoria', $_POST['categoria']);
+            $chamado->__set('descricao', $_POST['descricao']);
 
-        $chamado->__set('titulo', $_POST['titulo']);
-        $chamado->__set('categoria', $_POST['categoria']);
-        $chamado->__set('descricao', $_POST['descricao']);
+            // Trabalhar em uma validação 
 
-        // Trabalhar em uma validação 
-
-        $chamado->salvar();
-        $this->view->Chamado_salvo = true;
-        $this->render('homepage');
-
+            $chamado->salvar();
+            $this->view->Chamado_salvo = true;
+            $this->render('homepage');
+        }else {
+            header('Location: /?login=erro');
     }
+}
 
 
     //Usuario
@@ -94,3 +101,4 @@ class AppController extends Action
         }
     }
 }
+

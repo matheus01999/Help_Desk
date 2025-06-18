@@ -1,4 +1,4 @@
-<? if ($this->view->erroCadastro) { ?>
+<? if (isset($this->view->erroCadastro) && $this->view->erroCadastro) { ?>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Erro</strong> durante o cadastro valide os campos.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -26,7 +26,9 @@
                             <label class="form-label">Senha</label>
                             <input type="password" class="form-control" name="senha">
                         </div>
+                        <a type="submit" href="/homepage" class="btn btn-primary">Voltar</a>
                         <button type="submit" class="btn btn-success" style="float: right;">Salvar</button>
+                        
                     </form>
                 </div>
             </div>

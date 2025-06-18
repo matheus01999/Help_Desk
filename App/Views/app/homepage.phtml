@@ -32,9 +32,35 @@
     </div>
 <? } ?>
 
-<? if ($this->view->Chamado_salvo) { ?>
+<? if (isset($this->view->Chamado_salvo) && $this->view->Chamado_salvo) { ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Chamado</strong> aberto com sucesso
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <? } ?>
+
+
+
+  <div class="row p-4">
+  <div class="col">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Solicitante</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Categoria</th>
+    </tr>
+  </thead>
+  <tbody>
+    <? foreach($this->view->chamados as $id_chamado => $chamado){ ?>
+    <tr>
+      <th scope="row"><?=$chamado['id']?></th>
+      <td><?=$chamado['nome']?></td>
+      <td><?=$chamado['titulo']?></td>
+      <td><?=$chamado['categoria']?></td>
+    </tr>
+      <? } ?>
+  </tbody>
+</table>
+
