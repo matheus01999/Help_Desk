@@ -36,32 +36,18 @@ class AppController extends Action
     public function salvarChamado()
     { // Metodo responsavel por salvar o chamado no banco
 
-        $usuario = Container::getModel('Usuario');
+        $chamado = Container::getModel('Chamado');
 
-        $usuario->__set('nome', $_POST['nome']);
-        $usuario->__set('email', $_POST['email']);
-        $usuario->__set('senha', $_POST['senha']);
+        $chamado->__set('titulo', $_POST['titulo']);
+        $chamado->__set('categoria', $_POST['categoria']);
+        $chamado->__set('descricao', $_POST['descricao']);
 
+        // Trabalhar em uma validação 
 
+        $chamado->salvar();
+        $this->view->Chamado_salvo = true;
+        $this->render('homepage');
 
-
-        if ($usuario->validarCadastro() && count($usuario->getUsuarioPorEmail()) == 0) {
-
-            $usuario->salvar();
-
-            $this->render('index');
-        } else {
-
-            $this->view->usuario = array(
-                'nome' => $_POST['nome'],
-                'email' => $_POST['email'],
-                'senha' => $_POST['senha'],
-            );
-
-            $this->view->erroCadastro = true;
-
-            $this->render('adduser');
-        }
     }
 
 
@@ -93,7 +79,8 @@ class AppController extends Action
 
             $usuario->salvar();
 
-            $this->render('index');
+            $this->view->Usuario_salvo = true;
+            $this->render('homepage');
         } else {
 
             $this->view->usuario = array(
@@ -102,9 +89,8 @@ class AppController extends Action
                 'senha' => $_POST['senha'],
             );
 
-            $this->view->erroCadastro = true;
-
-            $this->render('adduser');
+            $this->view->erroCadastro;
+            $this->render('addUsuario');
         }
     }
 }

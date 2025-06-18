@@ -25,3 +25,16 @@
     </div>
   </div>
 </nav>
+<? if (isset($this->view->Usuario_salvo) && $this->view->Usuario_salvo) { ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Usuario</strong> cadastrado com sucesso
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<? } ?>
+
+<? if ($this->view->Chamado_salvo) { ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Chamado</strong> aberto com sucesso
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<? } ?>

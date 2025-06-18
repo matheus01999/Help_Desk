@@ -26,7 +26,7 @@ class Usuario extends Model {
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(':nome', $this->__get('nome'));
 		$stmt->bindValue(':email', $this->__get('email'));
-		$stmt->bindValue(':senha', $this->__get('senha')); //md5() -> hash 32 caracteres
+		$stmt->bindValue(':senha', md5($this->__get('senha'))); 
 		$stmt->execute();
 
 		return $this;
