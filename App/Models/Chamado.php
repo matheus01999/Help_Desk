@@ -46,6 +46,13 @@ class Chamado extends Model {
 
 	}
 
+	public function excluir(){
+		$query = 'delete from chamados where id = :id';
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':id', $this->__get('id'));
+		$stmt->execute();
+	}
+
 
 }
 

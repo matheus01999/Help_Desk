@@ -60,6 +60,19 @@ class AppController extends Action
     }
 }
 
+public function excluirChamado(){
+    session_start();
+        if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
+
+            $chamado = Container::getModel('Chamado');
+            $chamado->__set('id', $_GET['id']);
+
+            $chamado->excluir();
+            header('Location: /homepage?excluirChamado = true');
+        }
+    
+}
+
 
     //Usuario
 

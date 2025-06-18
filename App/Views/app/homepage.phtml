@@ -55,6 +55,8 @@
           <th scope="col">Solicitante</th>
           <th scope="col">Titulo</th>
           <th scope="col">Categoria</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -64,6 +66,8 @@
             <td><?= $chamado['nome'] ?></td>
             <td><?= $chamado['titulo'] ?></td>
             <td><?= $chamado['categoria'] ?></td>
+            <td><a href="/excluirChamado?id=<?=$chamado['id']?>" class="btn btn-danger">Excluir</a></td>
+            <td><a href="/editar?<?=$chamado['id']?>" class="btn btn-success">Editar</a></td>
           </tr>
         <? } ?>
       </tbody>

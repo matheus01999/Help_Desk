@@ -62,6 +62,12 @@ class Route extends Bootstrap {
 			'action' => 'salvarChamado'
 		);
 
+		$routes['excluirChamado'] = array( //Rota responsavel pela renderização da View para adicionar o usuario
+			'route' => '/excluirChamado',
+			'controller' => 'AppController',
+			'action' => 'excluirChamado'
+		);
+
 
 
 
