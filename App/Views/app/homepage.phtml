@@ -13,54 +13,88 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/addUsuario">Usuario</a></li>
             <li><a class="dropdown-item" href="/addChamado">Chamados</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search"  aria-label="Search"/>
+        <input class="form-control me-2" type="search" aria-label="Search" />
         <button class="btn btn-success" type="submit">Buscar</button>
       </form>
     </div>
   </div>
 </nav>
 <? if (isset($this->view->Usuario_salvo) && $this->view->Usuario_salvo) { ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Usuario</strong> cadastrado com sucesso
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Usuario</strong> cadastrado com sucesso
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 <? } ?>
 
 <? if (isset($this->view->Chamado_salvo) && $this->view->Chamado_salvo) { ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Chamado</strong> aberto com sucesso
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Chamado</strong> aberto com sucesso
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 <? } ?>
 
 
 
-  <div class="row p-4">
+<div class="row p-4">
   <div class="col">
+    <div class="alert alert-primary" role="alert">
+      <strong>Chamados</strong>
+    </div>
     <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Solicitante</th>
-      <th scope="col">Titulo</th>
-      <th scope="col">Categoria</th>
-    </tr>
-  </thead>
-  <tbody>
-    <? foreach($this->view->chamados as $id_chamado => $chamado){ ?>
-    <tr>
-      <th scope="row"><?=$chamado['id']?></th>
-      <td><?=$chamado['nome']?></td>
-      <td><?=$chamado['titulo']?></td>
-      <td><?=$chamado['categoria']?></td>
-    </tr>
-      <? } ?>
-  </tbody>
-</table>
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Solicitante</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Categoria</th>
+        </tr>
+      </thead>
+      <tbody>
+        <? foreach ($this->view->chamados as $id_chamado => $chamado) { ?>
+          <tr>
+            <th scope="row"><?= $chamado['id'] ?></th>
+            <td><?= $chamado['nome'] ?></td>
+            <td><?= $chamado['titulo'] ?></td>
+            <td><?= $chamado['categoria'] ?></td>
+          </tr>
+        <? } ?>
+      </tbody>
+    </table>
+  </div>
+</div>
 
+<div class="row p-4">
+  <div class="col">
+    <div class="alert alert-primary" role="alert">
+      <strong>Usuarios</strong>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col">Nivel</th>
+        </tr>
+      </thead>
+      <tbody>
+        <? foreach ($this->view->usuarios as $id_usuario => $usuario) { ?>
+          <tr>
+            <th scope="row"><?= $chamado['id'] ?></th>
+            <td><?= $usuario['nome'] ?></td>
+            <td><?= $usuario['email'] ?></td>
+            <td>definir</td>
+          </tr>
+        <? } ?>
+      </tbody>
+    </table>
+  </div>
+</div>

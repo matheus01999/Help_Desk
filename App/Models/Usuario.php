@@ -79,6 +79,15 @@ class Usuario extends Model {
 
 		return $this;
 	}
+
+	public function listar(){
+		$query = "select id, nome, email from usuarios";
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+	}
 }
 
 ?>
