@@ -88,6 +88,14 @@ class Usuario extends Model {
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 	}
+
+	public function excluir(){
+		$query = 'delete from usuarios where id = :id';
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':id', $this->__get('id'));
+		$stmt->execute();
+	}
+
 }
 
 ?>

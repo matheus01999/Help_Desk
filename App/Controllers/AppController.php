@@ -56,7 +56,7 @@ class AppController extends Action
             // Trabalhar em uma validação 
 
             $chamado->salvar();
-            $this->render('homepage');
+            header('Location: /homepage?Chamado_salvo');
         } else {
             header('Location: /?login=erro');
         }
@@ -75,7 +75,24 @@ class AppController extends Action
         }
     }
 
-    public function editarChamado() {}
+    public function editarChamado() {
+        session_start();
+        if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
+
+            $chamado = Container::getModel('Chamado');
+
+            $chamado->__set('id', $_POST['id']);
+            $chamado->__set('titulo', $_POST['titulo']);
+            $chamado->__set('categoria', $_POST['categoria']);
+            $chamado->__set('descricao', $_POST['descricao']);
+
+            $chamado->editar();
+
+
+            header('Location: /homepage');
+
+        }
+    }
 
 
     //Usuario
@@ -106,9 +123,20 @@ class AppController extends Action
             header('Location: /homepage?Usuario_salvo');
         }
 
+        //trabalhar em uma validação
+    }
 
+    public function excluirUsuario()
+    {
+        session_start();
+        if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
+            
+            $usuario = Container::getModel('Usuario');
+            $usuario->__set('id', $_GET['id']);
+            $usuario->excluir();
+            header('Location: /homepage?Usuario_removido');
 
-        //trabalhar em uma validação de form 
+        }
 
 
     }
