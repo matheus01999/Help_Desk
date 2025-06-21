@@ -43,8 +43,9 @@ class AppController extends Action
 
     public function salvarChamado()
     { // Metodo responsavel por salvar o chamado no banco
-            session_start();
+        session_start();
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
+
             $chamado = Container::getModel('Chamado');
 
             $chamado->__set('id_usuario', $_SESSION['id']);
@@ -55,28 +56,43 @@ class AppController extends Action
             // Trabalhar em uma validação 
 
             $chamado->salvar();
-            $this->render('homepage');
-        }else {
+            header('Location: /homepage?Chamado_salvo');
+        } else {
             header('Location: /?login=erro');
+        }
     }
-}
 
-public function excluirChamado(){
-    session_start();
+    public function excluirChamado()
+    {
+        session_start();
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
 
             $chamado = Container::getModel('Chamado');
             $chamado->__set('id', $_GET['id']);
 
             $chamado->excluir();
-            header('Location: /homepage?excluirChamado = true');
+            header('Location: /homepage?Chamado_removido');
         }
-    
-}
+    }
 
-public function editarChamado(){
+    public function editarChamado() {
+        session_start();
+        if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
 
-}
+            $chamado = Container::getModel('Chamado');
+
+            $chamado->__set('id', $_POST['id']);
+            $chamado->__set('titulo', $_POST['titulo']);
+            $chamado->__set('categoria', $_POST['categoria']);
+            $chamado->__set('descricao', $_POST['descricao']);
+
+            $chamado->editar();
+
+
+            header('Location: /homepage');
+
+        }
+    }
 
 
     //Usuario
@@ -94,32 +110,34 @@ public function editarChamado(){
     public function salvarUsuario()
     { // Metodo responsavel por salvar o usuario do banco
 
-        $usuario = Container::getModel('Usuario');
+        session_start();
+        if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
 
-        $usuario->__set('nome', $_POST['nome']);
-        $usuario->__set('email', $_POST['email']);
-        $usuario->__set('senha', $_POST['senha']);
+            $usuario = Container::getModel('Usuario');
 
-
-
-
-        if ($usuario->validarCadastro() && count($usuario->getUsuarioPorEmail()) == 0) {
+            $usuario->__set('nome', $_POST['nome']);
+            $usuario->__set('email', $_POST['email']);
+            $usuario->__set('senha', $_POST['senha']);
 
             $usuario->salvar();
-
-            $this->view->Usuario_salvo = true;
-            $this->render('homepage');
-        } else {
-
-            $this->view->usuario = array(
-                'nome' => $_POST['nome'],
-                'email' => $_POST['email'],
-                'senha' => $_POST['senha'],
-            );
-
-            $this->view->erroCadastro;
-            $this->render('addUsuario');
+            header('Location: /homepage?Usuario_salvo');
         }
+
+        //trabalhar em uma validação
+    }
+
+    public function excluirUsuario()
+    {
+        session_start();
+        if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
+            
+            $usuario = Container::getModel('Usuario');
+            $usuario->__set('id', $_GET['id']);
+            $usuario->excluir();
+            header('Location: /homepage?Usuario_removido');
+
+        }
+
+
     }
 }
-

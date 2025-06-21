@@ -66,7 +66,7 @@ class Usuario extends Model {
 		$query = "select id, nome, email from usuarios where email = :email and senha = :senha";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(":email", $this->__get('email'));
-		$stmt->bindValue(":senha", $this->__get('senha'));
+		$stmt->bindValue(":senha", md5($this->__get('senha')));
 		$stmt->execute();
 
 		$usuario = $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -88,6 +88,14 @@ class Usuario extends Model {
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 	}
+
+	public function excluir(){
+		$query = 'delete from usuarios where id = :id';
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':id', $this->__get('id'));
+		$stmt->execute();
+	}
+
 }
 
 ?>
