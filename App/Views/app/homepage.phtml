@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Help Desk</a>
+    <a class="navbar-brand" href="/homepage">Help Desk</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -56,12 +56,9 @@
   </div>
 <? } ?>
 
-
-
-<? if (!empty($this->view->chamados)) { ?>
-
-  <div class="row p-4">
-    <div class="col">
+<div class="row" style="margin-top: 40px;">
+  <? if (!empty($this->view->chamados)) { ?>
+    <div class="col-5 offset-1">
       <div class="alert alert-primary" role="alert">
         <strong>Chamados</strong>
       </div>
@@ -86,63 +83,15 @@
               <td><a href="/excluirChamado?id=<?= $chamado['id'] ?>" class="btn btn-danger">Excluir</a></td>
               <td><a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarChamado<?= $chamado['id'] ?>">Editar</a></td>
             </tr>
-            <!-- Modal para edição de chamado -->
-            <div class="modal fade" id="editarChamado<?= $chamado['id'] ?>" tabindex="-1" 
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Chamado: <?= $chamado['id']?></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form action='/editarChamado' method="POST">
-                      <input type="hidden" name="id" value="<?= $chamado['id']?>">
-                      <div class="mb-3">
-                        <label class="form-label">Usuario</label>
-                        <input type="text" name="titulo" class="form-control" value="<?= $chamado['nome'] ?>" disabled>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label">Título</label>
-                        <input type="text" name="titulo" class="form-control" value="<?= $chamado['titulo'] ?>">
-                      </div>
-
-                      <div class="mb-3">
-                        <label class="form-label">Categoria</label>
-                        <select class="form-control" name="categoria">
-                          <option>Criação Usuário</option>
-                          <option>Impressora</option>
-                          <option>Hardware</option>
-                          <option>Software</option>
-                          <option>Rede</option>
-                        </select>
-                      </div>
-
-                      <div class="mb-3">
-                        <label class="form-label">Descrição</label>
-                        <textarea class="form-control" name="descricao" rows="3"><?=$chamado['descricao']?></textarea>
-                      </div>
-                      <div class="p-4">
-                        <a type="submit" href="/homepage" class="btn btn-primary">Voltar</a>
-                        <button class="btn btn-success btn-block" type="submit" style="float: right;">Editar</button>
-                      </div>
-                  </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+          <? } ?>
+        </tbody>
+      </table>
     </div>
   <? } ?>
-  </tbody>
-  </table>
 
+  <? if (!empty($this->view->usuarios)) { ?>
 
-<? } ?>
-
-<? if (!empty($this->view->usuarios)) { ?>
-
-  <div class="row p-4">
-    <div class="col">
+    <div class="col-5">
       <div class="alert alert-primary" role="alert">
         <strong>Usuarios</strong>
       </div>
@@ -165,7 +114,7 @@
                 <td><?= $usuario['nome'] ?></td>
                 <td><?= $usuario['email'] ?></td>
                 <td>definir</td>
-                <td><a href="/excluirUsuario?id=<?=$usuario['id']?>" class="btn btn-danger"> Excluir</a></td>
+                <td><a href="/excluirUsuario?id=<?= $usuario['id'] ?>" class="btn btn-danger"> Excluir</a></td>
                 <td><a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarChamado<?= $chamado['id'] ?>">View</a></td>
               </tr>
 
@@ -176,6 +125,53 @@
         </tbody>
       </table>
     </div>
-  </div>
 
-<? } ?>
+    <? } ?>
+
+
+
+  <!-- Modal para edição de chamado -->
+  <div class="modal fade" id="editarChamado<?= $chamado['id'] ?>" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Chamado: <?= $chamado['id'] ?></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action='/editarChamado' method="POST">
+            <input type="hidden" name="id" value="<?= $chamado['id'] ?>">
+            <div class="mb-3">
+              <label class="form-label">Usuario</label>
+              <input type="text" name="titulo" class="form-control" value="<?= $chamado['nome'] ?>" disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Título</label>
+              <input type="text" name="titulo" class="form-control" value="<?= $chamado['titulo'] ?>">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Categoria</label>
+              <select class="form-control" name="categoria">
+                <option>Criação Usuário</option>
+                <option>Impressora</option>
+                <option>Hardware</option>
+                <option>Software</option>
+                <option>Rede</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Descrição</label>
+              <textarea class="form-control" name="descricao" rows="3"><?= $chamado['descricao'] ?></textarea>
+            </div>
+            <div class="p-4">
+              <a type="submit" href="/homepage" class="btn btn-primary">Voltar</a>
+              <button class="btn btn-success btn-block" type="submit" style="float: right;">Editar</button>
+            </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
