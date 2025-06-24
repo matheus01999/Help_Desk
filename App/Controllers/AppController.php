@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 //os recursos do miniframework
+use App\DB\Database;
 use MF\Controller\Action;
 use MF\Model\Container;
 
@@ -139,5 +140,13 @@ class AppController extends Action
         }
 
 
+    }
+
+
+    //Testando querryBuilder
+    public function cadastrado(){
+        $obchamado = new Database('chamados');
+        echo '<pre>';
+        print_r($obchamado);
     }
 }

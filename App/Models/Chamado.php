@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\DB\Database;
 use MF\Model\Model;
 
 class Chamado extends Model
@@ -67,5 +68,11 @@ class Chamado extends Model
 		$stmt->bindValue(':categoria', $this->__get('categoria'));
 		$stmt->bindValue(':descricao', $this->__get('descricao'));
 		$stmt->execute();
+	}
+
+	//Testando uma querrryBuilder
+
+	public function cadastrar() {
+		
 	}
 }
