@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 //os recursos do miniframework
+use App\DB\Database;
+use App\Models\Chamado;
 use MF\Controller\Action;
 use MF\Model\Container;
 
@@ -21,7 +23,7 @@ class AppController extends Action
 
             //recuperar usuarios e chamados 
             $this->view->usuarios = $usuario->listar();
-            $this->view->chamados = $chamado->listar();
+            $this->view->chamados = Chamado::getChamados();
             $this->render('homepage'); //Homepage do usuario 
         } else {
             header('Location: /?login=erro');
@@ -41,26 +43,25 @@ class AppController extends Action
         }
     }
 
-    public function salvarChamado()
-    { // Metodo responsavel por salvar o chamado no banco
+    public function inserirChamado(){
+
         session_start();
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
+        $chamado = Container::getModel('Chamado');
+        $chamado->id_usuario = $_SESSION['id'];
+        $chamado->titulo = $_POST['titulo'];
+        $chamado->categoria = $_POST['categoria'];
+        $chamado->descricao = $_POST['descricao'];
+        $chamado->salvar();
 
-            $chamado = Container::getModel('Chamado');
+        header('Location: /homepage?Chamado_salvo');
 
-            $chamado->__set('id_usuario', $_SESSION['id']);
-            $chamado->__set('titulo', $_POST['titulo']);
-            $chamado->__set('categoria', $_POST['categoria']);
-            $chamado->__set('descricao', $_POST['descricao']);
-
-            // Trabalhar em uma validação 
-
-            $chamado->salvar();
-            header('Location: /homepage?Chamado_salvo');
-        } else {
-            header('Location: /?login=erro');
-        }
+    }else{header('Location: /?login=erro');
     }
+
+}
+
+
 
     public function excluirChamado()
     {
@@ -140,4 +141,12 @@ class AppController extends Action
 
 
     }
-}
+
+
+
+    
+        
+    }
+
+
+
