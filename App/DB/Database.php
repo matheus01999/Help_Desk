@@ -28,6 +28,19 @@ class Database{
         }
 }
 
+
+    public function insertTest($values){
+
+        //dados da querry
+        $fields = array_keys($values);
+        $querry = 'insert into '.$this->table.'('.implode(',',$fields).')values(?,?,?,?)';
+        echo $querry;
+        
+    }
+
+
+
+
 }
 
 

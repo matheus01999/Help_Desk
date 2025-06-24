@@ -145,8 +145,15 @@ class AppController extends Action
 
     //Testando querryBuilder
     public function cadastrado(){
-        $obchamado = new Database('chamados');
-        echo '<pre>';
-        print_r($obchamado);
+
+        session_start();
+        if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
+        $chamado = Container::getModel('Chamado');
+        $chamado->cadastrado();
+
     }
+        
+    }
+
+
 }

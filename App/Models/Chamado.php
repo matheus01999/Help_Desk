@@ -72,7 +72,15 @@ class Chamado extends Model
 
 	//Testando uma querrryBuilder
 
-	public function cadastrar() {
+	public function cadastrado() {
+	     $obdata = new Database('chamados');
+		 $obdata->insertTest([
+            'id_usuario' => '$this->id_usuario',
+            'titulo' => '$this->titulo',
+            'categoria' => '$this->categoria',
+            'descricao' => '$this->descricao',
+
+        ]);
 		
 	}
 }
