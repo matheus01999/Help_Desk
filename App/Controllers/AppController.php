@@ -144,12 +144,16 @@ class AppController extends Action
 
 
     //Testando querryBuilder
-    public function cadastrado(){
+    public function inserirChamado(){
 
         session_start();
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
         $chamado = Container::getModel('Chamado');
-        $chamado->cadastrado();
+        $chamado->id_usuario = $_SESSION['id'];
+        $chamado->titulo = $_POST['titulo'];
+        $chamado->categoria = $_POST['categoria'];
+        $chamado->descricao = $_POST['descricao'];
+        $chamado->insert();
 
     }
         

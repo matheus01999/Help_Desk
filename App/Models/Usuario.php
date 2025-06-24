@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use MF\Model\Model;
+use App\DB\Database;
 
 class Usuario extends Model {
 
@@ -20,16 +21,14 @@ class Usuario extends Model {
 	}
 
 	//salvar
-	public function salvar() {
-
-		$query = "insert into usuarios(nome, email, senha)values(:nome, :email, :senha)";
-		$stmt = $this->db->prepare($query);
-		$stmt->bindValue(':nome', $this->__get('nome'));
-		$stmt->bindValue(':email', $this->__get('email'));
-		$stmt->bindValue(':senha', md5($this->__get('senha'))); 
-		$stmt->execute();
-
-		return $this;
+		public function salvar() {
+	     $obdata = new Database('usuarios');
+		 $obdata->insert([
+            'nome' => $this->nome,
+            'email' => $this->email,
+            'senha' => $this->senha,
+        ] );
+		return $this;		
 	}
 
 	//validar se um cadastro pode ser feito

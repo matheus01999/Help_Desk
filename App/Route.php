@@ -82,10 +82,10 @@ class Route extends Bootstrap {
 
 
 		//Testando o querryBuilder
-		$routes['cadastrado'] = array( //editar usuario usuario no banco
-			'route' => '/cadastrado',
+		$routes['inserirChamado'] = array( //editar usuario usuario no banco
+			'route' => '/inserirChamado',
 			'controller' => 'AppController',
-			'action' => 'cadastrado'
+			'action' => 'inserirChamado'
 		);
 
 

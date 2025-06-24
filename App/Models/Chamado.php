@@ -24,20 +24,7 @@ class Chamado extends Model
 		$this->$atributo = $valor;
 	}
 
-	//salvar
-	public function salvar()
-	{
-
-		$query = "insert into chamados(id_usuario, titulo, categoria, descricao)values(:id_usuario, :titulo, :categoria, :descricao)";
-		$stmt = $this->db->prepare($query);
-		$stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
-		$stmt->bindValue(':titulo', $this->__get('titulo'));
-		$stmt->bindValue(':categoria', $this->__get('categoria'));
-		$stmt->bindValue(':descricao', $this->__get('descricao'));
-		$stmt->execute();
-
-		return $this;
-	}
+	
 
 	public function listar()
 	{
@@ -72,13 +59,13 @@ class Chamado extends Model
 
 	//Testando uma querrryBuilder
 
-	public function cadastrado() {
+	public function salvar() {
 	     $obdata = new Database('chamados');
-		 $obdata->insertTest([
-            'id_usuario' => '$this->id_usuario',
-            'titulo' => '$this->titulo',
-            'categoria' => '$this->categoria',
-            'descricao' => '$this->descricao',
+		 $obdata->insert([
+            'id_usuario' => $this->id_usuario,
+            'titulo' => $this->titulo,
+            'categoria' => $this->categoria,
+            'descricao' => $this->descricao,
 
         ]);
 		
