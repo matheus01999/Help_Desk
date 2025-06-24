@@ -54,5 +54,20 @@ class Database
         //Montar a querry
         $querry = 'insert into ' . $this->table . '(' . implode(',', $fields) . ')values(' . implode(',', $binds) . ')';
         $this->execute($querry, array_values($values));
+
+        //Retorna do ID Inserido
+        return $this->connection->lastInsertId();
+    }
+
+    public function select($where = null, $order =null, $limit = null, $fields = null){
+        //DADOS DA QUERRY
+        $where = strlen($where) ? 'WHERE'.$where: '';
+        $order = strlen($order) ? 'ORDER BY'.$order: '';
+        $limit = strlen($limit) ? 'LIMIT'.$limit: '';
+
+        $querry = 'select  * from chamados';
+
+        return $this->execute($querry);
+        
     }
 }
