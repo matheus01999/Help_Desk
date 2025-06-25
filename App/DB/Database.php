@@ -6,6 +6,7 @@ use App\Connection;
 use \PDO;
 use \PDOException;
 
+
 class Database
 {
     private $table;
@@ -31,16 +32,15 @@ class Database
         }
     }
 
-    public function execute($querry, $params = []) {
-        try{
+    public function execute($querry, $params = [])
+    {
+        try {
             $statemanet = $this->connection->prepare($querry);
             $statemanet->execute($params);
             return $statemanet;
-        }catch(PDOException $e){
-            die('Erro'.$e->getMessage());
-
+        } catch (PDOException $e) {
+            die('Erro' . $e->getMessage());
         }
-
     }
 
 
@@ -59,15 +59,15 @@ class Database
         return $this->connection->lastInsertId();
     }
 
-    public function select($where = null, $order =null, $limit = null, $fields = null){
+    public function select($where = null, $order = null, $limit = null, $fields = '*')
+    {
         //DADOS DA QUERRY
-        $where = strlen($where) ? 'WHERE'.$where: '';
-        $order = strlen($order) ? 'ORDER BY'.$order: '';
-        $limit = strlen($limit) ? 'LIMIT'.$limit: '';
+        $where = strlen($where) ? 'WHERE ' . $where : '';
+        $order = strlen($order) ? 'ORDER BY ' . $order : '';
+        $limit = strlen($limit) ? 'LIMIT ' . $limit : '';
 
-        $querry = 'select  * from chamados';
+        $querry = 'SELECT' .$fields. ' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
 
         return $this->execute($querry);
-        
     }
 }

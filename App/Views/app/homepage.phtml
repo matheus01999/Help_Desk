@@ -30,7 +30,7 @@
 
 <?
 
-use App\Models\Chamado;
+
 
 if (isset($_GET['Usuario_salvo'])) { ?>
   <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -79,11 +79,21 @@ if (isset($_GET['Usuario_salvo'])) { ?>
         <th scope="col">Solicitante</th>
         <th scope="col">Titulo</th>
         <th scope="col">Categoria</th>
-        <th></th>
-        <th></th>
+        <th scope="col">Excluir</th>
+        <th scope="col">Editar</th>
       </tr>
     </thead>
     <tbody>
+      <? foreach ($this->view->chamados as $chamado) { ?>
+        <tr>
+          <td><?= $chamado['id'] ?></td>
+          <td><?= $chamado['id_usuario'] ?></td>
+          <td><?= $chamado['titulo'] ?></td>
+          <td><?= $chamado['categoria'] ?></td>
+          <td><a href="" class="btn btn-danger ">Excluir</a></td>
+          <td><a href="" class="btn btn-success ">Editar</a></td>
+        </tr>
+      <? } ?>
     </tbody>
   </table>
 </div>
@@ -106,19 +116,21 @@ if (isset($_GET['Usuario_salvo'])) { ?>
         <th scope="col">Nome</th>
         <th scope="col">Email</th>
         <th scope="col">Nivel</th>
-        <th></th>
-        <th></th>
+        <th scope="col"> Excluir</th>
+        <th scope="col">Editar</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row"><?= $usuario['id'] ?></th>
-        <td><?= $usuario['nome'] ?></td>
-        <td><?= $usuario['email'] ?></td>
-        <td>definir</td>
-        <td><a href="/excluirUsuario?id=<?= $usuario['id'] ?>" class="btn btn-danger"> Excluir</a></td>
-        <td><a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarChamado<?= $chamado['id'] ?>">View</a></td>
-      </tr>
+      <? foreach ($this->view->usuarios as $usuario) { ?>
+        <tr>
+          <td><?= $usuario['id'] ?></td>
+          <td><?= $usuario['nome'] ?></td>
+          <td><?= $usuario['email'] ?></td>
+          <td>Nivel</td>
+          <td><a href="" class="btn btn-danger ">Excluir</a></td>
+          <td><a href="" class="btn btn-success ">Editar</a></td>
+        </tr>
+      <? } ?>
     </tbody>
   </table>
 </div>

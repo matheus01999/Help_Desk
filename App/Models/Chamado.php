@@ -74,8 +74,14 @@ class Chamado extends Model
 
 	}
 
+
 	public static function getChamados($where = null, $order =null, $limit = null){
-		return(new Database('chamados'))->select($where,$order,$limit)->fetchAll(PDO::FETCH_CLASS,self::class);
+		return(new Database('chamados'))->select($where,$order,$limit)->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public static function getChamado($id){
+		return(new Database('chamados'))->select('id = '.$id)->fetchAll(PDO::FETCH_ASSOC);
+
 	}
 
 
