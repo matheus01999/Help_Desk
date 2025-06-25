@@ -4,6 +4,7 @@ namespace App\Models;
 
 use MF\Model\Model;
 use App\DB\Database;
+use \PDO;
 
 class Usuario extends Model {
 
@@ -94,6 +95,16 @@ class Usuario extends Model {
 		$stmt->bindValue(':id', $this->__get('id'));
 		$stmt->execute();
 	}
+
+		public static function getUsuarios($where = null, $order =null, $limit = null){
+		return(new Database('usuarios'))->select($where,$order,$limit)->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public static function getUsuario($id){
+		return(new Database('usuarios'))->select('id = '.$id)->fetchAll(PDO::FETCH_ASSOC);
+
+	}
+
 
 }
 

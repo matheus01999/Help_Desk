@@ -2,29 +2,34 @@
 
 namespace App\Controllers;
 
-//os recursos do miniframework
+
 use App\DB\Database;
 use App\Models\Chamado;
+use App\Models\Usuario;
+
 use MF\Controller\Action;
 use MF\Model\Container;
 
 class AppController extends Action
 {
 
+    // Renderização da View Homepage
     public function homepage()
     {
         session_start();
-
+        // VALIDAÇÃO DE LOGIN
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
 
-            //intancia do smodelos
+            // INSTÂNCIA DOS MODELOS
             $chamado = Container::getModel('Chamado');
             $usuario = Container::getModel('Usuario');
 
-            //recuperar usuarios e chamados 
+            // RECUPERAÇÃO DOS REGISTROS DOS BANCO
             $this->view->usuarios = $usuario->listar();
-            $this->view->chamados = Chamado::getChamados();
-            $this->render('homepage'); //Homepage do usuario 
+            $this->view->chamados = $chamado->listar();
+
+
+            $this->render('homepage');
         } else {
             header('Location: /?login=erro');
         }
@@ -32,121 +37,152 @@ class AppController extends Action
 
 
 
-    //Chamado
+    // RENDERIZAÇÃO DA VIEW addChamado
     public function addChamado()
     {
         session_start();
+        // VALIDAÇÃO DE LOGIN
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
-            $this->render('addChamado'); //Metodo responsavel pela renderização da View de cadastro de chamado
+            $this->render('addChamado');
         } else {
             header('Location: /?login=erro');
         }
     }
 
-    public function inserirChamado(){
-
-        session_start();
-        if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
-        $chamado = Container::getModel('Chamado');
-        $chamado->id_usuario = $_SESSION['id'];
-        $chamado->titulo = $_POST['titulo'];
-        $chamado->categoria = $_POST['categoria'];
-        $chamado->descricao = $_POST['descricao'];
-        $chamado->salvar();
-
-        header('Location: /homepage?Chamado_salvo');
-
-    }else{header('Location: /?login=erro');
-    }
-
-}
-
-
-
-    public function excluirChamado()
+    // METODO RESPONSAVEL POR SALVAR UM CHAMADO NO BANCO
+    public function inserirChamado()
     {
+
         session_start();
+        // VALIDAÇÃO DE LOGIN 
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
 
+            // INSTÂNCIA DO MODELO CHAMADO
             $chamado = Container::getModel('Chamado');
-            $chamado->__set('id', $_GET['id']);
 
-            $chamado->excluir();
-            header('Location: /homepage?Chamado_removido');
+            // SETANDO OS VALUES COM OS $_POST RECEBIDOS DO AddChamados
+            $chamado->id_usuario = $_SESSION['id'];
+            $chamado->titulo = $_POST['titulo'];
+            $chamado->categoria = $_POST['categoria'];
+            $chamado->descricao = $_POST['descricao'];
+
+            // SALVA O REGISTRO NO BANCO
+            $chamado->salvar();
+
+            // REDIRENCIONA PARA VIEW HOMEPAGE COM O STATUS DE CHAMADO SALVO
+            header('Location: /homepage?Chamado_salvo');
+        } else {
+            header('Location: /?login=erro');
         }
     }
 
-    public function editarChamado() {
+    // METODO RESPONSAVEL POR EDITAR UM CHAMADO NO BANCO
+    public function editarChamado()
+    {
+        // VALIDAÇÃO DO LOGIN
         session_start();
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
 
+            // INSTÂNCIA DO MODELO CHAMADO
             $chamado = Container::getModel('Chamado');
 
+            // SETANDO OS VALUES COM OS $_POST RECEBIDOS DO MODEL DE EDIÇÃO
             $chamado->__set('id', $_POST['id']);
             $chamado->__set('titulo', $_POST['titulo']);
             $chamado->__set('categoria', $_POST['categoria']);
             $chamado->__set('descricao', $_POST['descricao']);
 
+            // EDITANDO O REGISTRO NO BANCO 
             $chamado->editar();
 
-
+            // REDIRECIONA PARA VIEW HOMEPAGE
             header('Location: /homepage');
-
         }
     }
 
 
-    //Usuario
+    // METODO RESPONSAVEL POR EXCLUIR UM CHAMADO DO BANCO
+    public function excluirChamado()
+    {
+        
+        session_start();
+        // VALIDAÇÃO DE LOGIN
+        if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
 
+            // INSTÂNCIA DO MODELO CHAMADO
+            $chamado = Container::getModel('Chamado');
+            
+            // SETA O VALOR DE ID COM $_GET DO BUTTON EXCLUIR DA Homepage
+            $chamado->__set('id', $_GET['id']);
+
+            // EXCLUI O REGISTRO DO BANCO
+            $chamado->excluir();
+
+            // REDIRECIONA PARA HOMEPAGE COM O STATUS DE CHAMADO REMOVIDO
+            header('Location: /homepage?Chamado_removido');
+        }
+    }
+
+
+
+
+    
+    // RENDERIZAÇÃO DA VIEW AddUsuario
     public function addUsuario()
     {
         session_start();
+        // VALIDAÇÃO DO LOGIN
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
-            $this->render('addUsuario'); //Metodo responsavel pela renderização da View de cadastro de Usuario 
+            $this->render('addUsuario'); 
         } else {
             header('Location: /?login=erro');
         }
     }
 
+    // METODO RESPONSAVEL POR SALVAR UM USUARIO NO BANCO
     public function salvarUsuario()
-    { // Metodo responsavel por salvar o usuario do banco
-
+    { 
+        
         session_start();
+        // VALIDAÇÃO DO LOGIN
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
-
+            
+            // INSTÂNCIA DO MODELO USUARIO
             $usuario = Container::getModel('Usuario');
 
+            // SETANDO OS VALUES COM OS $_POST DO FORM DE AddUsuario
             $usuario->__set('nome', $_POST['nome']);
             $usuario->__set('email', $_POST['email']);
             $usuario->__set('senha', $_POST['senha']);
 
+            // SALVANDO O REGISTRO NO BANCO
             $usuario->salvar();
+
+            // REDIRECIONA PARA HOMEPAGE COM O STATUS DE USUARIO SALVO 
             header('Location: /homepage?Usuario_salvo');
         }
 
         //trabalhar em uma validação
     }
 
+    // METODO RESPONSAVEL POR EXCLUIR UM USUARIO DO BANCO
     public function excluirUsuario()
     {
         session_start();
+        // VALIDAÇÃO DE LOGIN
         if ($_SESSION['id'] != '' && $_SESSION['nome'] != '') {
-            
+
+            // INSTÂNCIA DO MODELO USUARIO
             $usuario = Container::getModel('Usuario');
+
+            // SETA O VALOR DE ID RECEBIDO PELO GET DO BUTTON EXCLUIR DA HOMEPAGE
             $usuario->__set('id', $_GET['id']);
+
+            // EXCLUI O REGISTRO DO BANCO
             $usuario->excluir();
+
+            // REDIRECIONA PARA HOMEPAGE COM O STATUS DE USUARIO REMOVIDO
             header('Location: /homepage?Usuario_removido');
-
         }
-
-
     }
-
-
-
-    
-        
-    }
-
-
-
+}
