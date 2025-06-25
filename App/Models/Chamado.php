@@ -10,17 +10,28 @@ use \PDO;
 class Chamado extends Model
 {
 
+	// IDENTIFICADO UNICO DO CHAMADO
 	private $id;
+
+	// ID DO USUARIO QUE CRIOU UM NOCO CHAMADO
+
 	private $id_usuario;
+	// TITULO DO CHAMADO
+
 	private $titulo;
+	// CATEGORIA DO CHAMADO
 	private $categoria;
+
+	// DESCRIÇÃO DO CHAMADO
 	private $descricao;
 
+	// METODO MAGICO PARA RECUPERAR O VALOR DAS VARIAVEIS
 	public function __get($atributo)
 	{
 		return $this->$atributo;
 	}
 
+	// METODO MAGICO QUE SETA UM VALOR NAS VARIAVEIS
 	public function __set($atributo, $valor)
 	{
 		$this->$atributo = $valor;
@@ -40,6 +51,7 @@ class Chamado extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	// METODO RESPONSAVEL POR EXCLUIR UM REGISTRO DO BANCO
 	public function excluir()
 	{
 		$query = 'delete from chamados where id = :id';
@@ -48,6 +60,7 @@ class Chamado extends Model
 		$stmt->execute();
 	}
 
+	// METODO RESPONSAVEL POR ATUALIZAR UM REGISTRO NO BANCO
 	public function editar()
 	{
 		$query = "update chamados set titulo = :titulo, categoria = :categoria, descricao = :descricao where id = :id ";
@@ -60,6 +73,7 @@ class Chamado extends Model
 	}
 
 
+	// METODO RESPONSAVEL POR SALVAR UM REGISTRO NO BANCO
 	public function salvar()
 	{
 		// INSTÂNCIA DO PDO 
