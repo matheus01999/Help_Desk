@@ -23,9 +23,9 @@ class Database
     {
         try {
             $this->connection = new PDO(
-                "mysql:host=localhost;dbname=appmeu;charset=utf8",
-                "root",
-                ""
+                "mysql:host=localhost;dbname=helpdsk;charset=utf8",
+                "oppo",
+                "60265146"
             );
         } catch (PDOException $e) {
             die("PDO ERROR" . $e->getMessage());

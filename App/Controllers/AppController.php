@@ -60,9 +60,12 @@ class AppController extends Action
             // INSTÂNCIA DO MODELO CHAMADO
             $chamado = Container::getModel('Chamado');
 
+            // GERAR UM VALOR PARA O TICKET
+            // ELABORAR**
+
+
             // SETANDO OS VALUES COM OS $_POST RECEBIDOS DO AddChamados
             $chamado->id_usuario = $_SESSION['id'];
-            $chamado->titulo = $_POST['titulo'];
             $chamado->categoria = $_POST['categoria'];
             $chamado->descricao = $_POST['descricao'];
 

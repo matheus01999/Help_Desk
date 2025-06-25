@@ -14,11 +14,11 @@ class Chamado extends Model
 	private $id;
 
 	// ID DO USUARIO QUE CRIOU UM NOCO CHAMADO
-
 	private $id_usuario;
-	// TITULO DO CHAMADO
 
-	private $titulo;
+	// TICKET DO CHAMADO
+	private $ticket;
+
 	// CATEGORIA DO CHAMADO
 	private $categoria;
 
@@ -41,7 +41,7 @@ class Chamado extends Model
 	// METODO RESPONSAVEL POR LISTAR OS REGISTRO DE CHAMADOS
 	public function listar()
 	{
-		$query = "select c.id, c.id_usuario, u.nome, c.titulo, c.categoria, c.descricao 
+		$query = "select c.id, c.id_usuario, u.nome, c.ticket, c.categoria, c.descricao 
 					from 
 					chamados as c
 					left join usuarios as u on (c.id_usuario = u.id)";
@@ -63,10 +63,10 @@ class Chamado extends Model
 	// METODO RESPONSAVEL POR ATUALIZAR UM REGISTRO NO BANCO
 	public function editar()
 	{
-		$query = "update chamados set titulo = :titulo, categoria = :categoria, descricao = :descricao where id = :id ";
+		$query = "update chamados set ticket = :ticket, categoria = :categoria, descricao = :descricao where id = :id ";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(':id', $this->__get('id'));
-		$stmt->bindValue(':titulo', $this->__get('titulo'));
+		$stmt->bindValue(':ticket', $this->__get('ticket'));
 		$stmt->bindValue(':categoria', $this->__get('categoria'));
 		$stmt->bindValue(':descricao', $this->__get('descricao'));
 		$stmt->execute();
@@ -82,7 +82,7 @@ class Chamado extends Model
 		// SALVANDO O CHAMADO NO NACO
 		$this->id = $obdata->insert([
 			'id_usuario' => $this->id_usuario,
-			'titulo' => $this->titulo,
+			'ticket' => $this->ticket,
 			'categoria' => $this->categoria,
 			'descricao' => $this->descricao,
 		]);
@@ -90,6 +90,7 @@ class Chamado extends Model
 		return true;
 
 	}
+	
 
 
 
