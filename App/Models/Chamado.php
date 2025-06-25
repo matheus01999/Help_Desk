@@ -6,6 +6,7 @@ use App\DB\Database;
 use MF\Model\Model;
 use \PDO;
 
+
 class Chamado extends Model
 {
 
@@ -26,7 +27,7 @@ class Chamado extends Model
 	}
 
 
-
+	// METODO RESPONSAVEL POR LISTAR OS REGISTRO DE CHAMADOS
 	public function listar()
 	{
 		$query = "select c.id, c.id_usuario, u.nome, c.titulo, c.categoria, c.descricao 
@@ -58,11 +59,13 @@ class Chamado extends Model
 		$stmt->execute();
 	}
 
-	//Testando uma querrryBuilder
 
 	public function salvar()
 	{
+		// INSTÂNCIA DO PDO 
 		$obdata = new Database('chamados');
+
+		// SALVANDO O CHAMADO NO NACO
 		$this->id = $obdata->insert([
 			'id_usuario' => $this->id_usuario,
 			'titulo' => $this->titulo,
@@ -74,15 +77,6 @@ class Chamado extends Model
 
 	}
 
-
-	public static function getChamados($where = null, $order =null, $limit = null){
-		return(new Database('chamados'))->select($where,$order,$limit)->fetchAll(PDO::FETCH_ASSOC);
-	}
-
-	public static function getChamado($id){
-		return(new Database('chamados'))->select('id = '.$id)->fetchAll(PDO::FETCH_ASSOC);
-
-	}
 
 
 }

@@ -96,14 +96,7 @@ class Usuario extends Model {
 		$stmt->execute();
 	}
 
-		public static function getUsuarios($where = null, $order =null, $limit = null){
-		return(new Database('usuarios'))->select($where,$order,$limit)->fetchAll(PDO::FETCH_ASSOC);
-	}
 
-	public static function getUsuario($id){
-		return(new Database('usuarios'))->select('id = '.$id)->fetchAll(PDO::FETCH_ASSOC);
-
-	}
 
 
 }

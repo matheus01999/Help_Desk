@@ -44,14 +44,15 @@ class Database
     }
 
 
+    // METODO RESPONSAVEL POR SALAVR UM REGISTRO NO BANCO
     public function insert($values)
     {
 
-        //dados da querry
+        // DADOS PARA A QUERRY
         $fields = array_keys($values);
         $binds = array_pad([], count($fields), '?');
 
-        //Montar a querry
+        // MONTA A QUERRY
         $querry = 'insert into ' . $this->table . '(' . implode(',', $fields) . ')values(' . implode(',', $binds) . ')';
         $this->execute($querry, array_values($values));
 
@@ -66,6 +67,7 @@ class Database
         $order = strlen($order) ? 'ORDER BY ' . $order : '';
         $limit = strlen($limit) ? 'LIMIT ' . $limit : '';
 
+        // MONTA A QUERRY COM BASE NOS DADOS
         $querry = 'SELECT' .$fields. ' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
 
         return $this->execute($querry);
