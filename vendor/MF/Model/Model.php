@@ -48,7 +48,7 @@ class Model
         return $this->db->lastInsertId();
     }
 
-    public function select($where = null, $order = null, $limit = null, $fields = '*')
+    public function select($where = null, $order = null, $limit = null)
     {
         //DADOS DA QUERRY
         $where = strlen($where) ? 'WHERE ' . $where : '';
@@ -56,7 +56,7 @@ class Model
         $limit = strlen($limit) ? 'LIMIT ' . $limit : '';
 
         // MONTA A QUERRY COM BASE NOS DADOS
-        $querry = 'SELECT ' . $fields . ' FROM ' . $this->table . ' ' . $where . ' ' . $order . ' ' . $limit;
+        $querry = 'select * from chamados';
 
         return $this->execute($querry);
     }

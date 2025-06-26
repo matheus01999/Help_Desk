@@ -2,11 +2,7 @@
 
 namespace App\Controllers;
 
-
-use App\DB\Database;
 use App\Models\Chamado;
-use App\Models\Usuario;
-
 use MF\Controller\Action;
 use MF\Model\Container;
 
@@ -28,12 +24,13 @@ class AppController extends Action
             $this->view->usuarios = $usuario->listar();
             $this->view->chamados = $chamado->listar();
 
+
+
             $this->render('homepage');
         } else {
             header('Location: /?login=erro');
         }
     }
-
 
 
     // RENDERIZAÇÃO DA VIEW addChamado
@@ -124,8 +121,6 @@ class AppController extends Action
             header('Location: /homepage?Chamado_removido');
         }
     }
-
-
 
 
     

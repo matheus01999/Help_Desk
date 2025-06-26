@@ -57,7 +57,7 @@ class Chamado extends Model {
 
 	// METODO RESPONSAVEL POR RECUPERAR OS CHAMADO DO BANCO DE DADOS
 	public static function getChamados($where = null, $order = null, $limit = null){
-		return (new Model)->select($where,$order,$limit)->fetchAll(\PDO::FETCH_CLASS, self::class);
+		return (new Model)->select($where,$order,$limit)->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
 
