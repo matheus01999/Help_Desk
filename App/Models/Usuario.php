@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Models;
-use MF\Database\Database;
+use MF\Model\Model;
 
 
-class Usuario  {
+class Usuario extends Model {
 
 
 	// IDENTIFICADOR UNICO DO USUARIO
@@ -38,7 +38,7 @@ class Usuario  {
 
 	// METODO RESPONSAVEL POR SALVAR UM REGISTRO NO BANCO 
 		public function salvar() {
-	     $obdata = new Database('usuarios'); // INSTÂNCIA DA CLASSE DATABASE COM O QUERRY BUILDER INSERT
+	     $obdata = new Model('usuarios'); // INSTÂNCIA DA CLASSE DATABASE COM O QUERRY BUILDER INSERT
 		 $obdata->insert([
             'nome' => $this->nome,
             'email' => $this->email,

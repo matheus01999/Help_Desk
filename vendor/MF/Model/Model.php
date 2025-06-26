@@ -1,31 +1,33 @@
 <?php
 
-namespace MF\Database;
+namespace MF\Model;
 
+use App\Connection;
 
-class Database
+class Model
 {
     private $table;
 
-
-
-    protected $db;
-
+    private $db;
+    
     public function __construct($table = null)
     {
         $this->table = $table;
+        $this->db = Connection::getDb();
         
     }
 
     
     public function execute($querry, $params = [])
     {
+        $db = Connection::getDb();
+        
         try {
             $statemanet = $this->db->prepare($querry);
             $statemanet->execute($params);
             return $statemanet;
         } catch (\PDOException $e) {
-            die('Erro' . $e->getMessage());
+            die('Erro durante o execute -> ' . $e->getMessage());
         }
     }
 

@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use MF\Database\Database;
+use MF\Model\Model;
 
-class Chamado {
+
+
+class Chamado extends Model {
 
 	// IDENTIFICADO UNICO DO CHAMADO
 	private $id;
@@ -55,7 +57,7 @@ class Chamado {
 
 	// METODO RESPONSAVEL POR RECUPERAR OS CHAMADO DO BANCO DE DADOS
 	public static function getChamados($where = null, $order = null, $limit = null){
-		return (new Database)->select($where,$order,$limit)->fetchAll(\PDO::FETCH_CLASS, self::class);
+		return (new Model)->select($where,$order,$limit)->fetchAll(\PDO::FETCH_CLASS, self::class);
 	}
 
 
@@ -85,12 +87,11 @@ class Chamado {
 	public function salvar()
 	{
 		// INSTÂNCIA DO PDO 
-		$obdata = new Database('chamados');
+		$obdata = new Model('chamados');
 
 		// SALVANDO O CHAMADO NO NACO
 		$this->id = $obdata->insert([
 			'id_usuario' => $this->id_usuario,
-			'ticket' => $this->ticket,
 			'categoria' => $this->categoria,
 			'descricao' => $this->descricao,
 		]);
