@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Models;
+use MF\Database\Database;
 
-use MF\Model\Model;
-use App\DB\Database;
-use \PDO;
 
-class Usuario extends Model {
+class Usuario  {
 
 
 	// IDENTIFICADOR UNICO DO USUARIO
@@ -20,6 +18,13 @@ class Usuario extends Model {
 
 	// SENHA DO USUARIO
 	private $senha;
+
+	protected $db;
+
+	public function __construct(\PDO $db) {
+		$this->db = $db;
+	}
+
 
 	// METODO MAGICO RESPONSAVEL POR RECUPERAR O VALOR DE UMA VARIAVEL
 	public function __get($atributo) {

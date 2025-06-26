@@ -2,13 +2,9 @@
 
 namespace App\Models;
 
-use App\DB\Database;
-use MF\Model\Model;
-use \PDO;
+use MF\Database\Database;
 
-
-class Chamado extends Model
-{
+class Chamado {
 
 	// IDENTIFICADO UNICO DO CHAMADO
 	private $id;
@@ -24,6 +20,12 @@ class Chamado extends Model
 
 	// DESCRIÇÃO DO CHAMADO
 	private $descricao;
+
+	protected $db;
+
+	public function __construct(\PDO $db) {
+		$this->db = $db;
+	}
 
 	// METODO MAGICO PARA RECUPERAR O VALOR DAS VARIAVEIS
 	public function __get($atributo)
@@ -50,6 +52,12 @@ class Chamado extends Model
 
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
+
+	// METODO RESPONSAVEL POR RECUPERAR OS CHAMADO DO BANCO DE DADOS
+	public static function getChamados($where = null, $order = null, $limit = null){
+		return (new Database)->select($where,$order,$limit)->fetchAll(\PDO::FETCH_CLASS, self::class);
+	}
+
 
 	// METODO RESPONSAVEL POR EXCLUIR UM REGISTRO DO BANCO
 	public function excluir()

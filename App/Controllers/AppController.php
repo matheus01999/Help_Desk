@@ -28,6 +28,9 @@ class AppController extends Action
             $this->view->usuarios = $usuario->listar();
             $this->view->chamados = $chamado->listar();
 
+            // TESTE COM QB PARA LISTAR    
+            //Chamado::getChamados();
+
 
             $this->render('homepage');
         } else {
