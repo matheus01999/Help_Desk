@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 //os recursos do miniframework
-use App\DB\Database;
+
 use App\Models\Chamado;
 use MF\Controller\Action;
 use MF\Model\Container;
@@ -23,7 +23,7 @@ class AppController extends Action
 
             //recuperar usuarios e chamados 
             $this->view->usuarios = $usuario->listar();
-            $this->view->chamados = Chamado::getChamados();
+            //$this->view->chamados = Chamado::getChamados();
             $this->render('homepage'); //Homepage do usuario 
         } else {
             header('Location: /?login=erro');

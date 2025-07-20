@@ -8,9 +8,9 @@ class Container {
 
 	public static function getModel($model) {
 		$class = "\\App\\Models\\".ucfirst($model);
-		$conn = Connection::getDb();
+		$db = Connection::getDb();
 
-		return new $class($conn);
+		return new $class($db);
 	}
 }
 

@@ -111,6 +111,7 @@ if (isset($_GET['Usuario_salvo'])) { ?>
       </tr>
     </thead>
     <tbody>
+      <? foreach($this->view->usuarios as $usuario) { ?> 
       <tr>
         <th scope="row"><?= $usuario['id'] ?></th>
         <td><?= $usuario['nome'] ?></td>
@@ -119,6 +120,7 @@ if (isset($_GET['Usuario_salvo'])) { ?>
         <td><a href="/excluirUsuario?id=<?= $usuario['id'] ?>" class="btn btn-danger"> Excluir</a></td>
         <td><a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarChamado<?= $chamado['id'] ?>">View</a></td>
       </tr>
+      <? } ?>
     </tbody>
   </table>
 </div>

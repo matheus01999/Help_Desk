@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use MF\Model\Model;
+use App\Connection;
 use App\DB\Database;
 
 class Usuario extends Model {
@@ -20,37 +21,7 @@ class Usuario extends Model {
 		$this->$atributo = $valor;
 	}
 
-	//salvar
-		public function salvar() {
-	     $obdata = new Database('usuarios');
-		 $obdata->insert([
-            'nome' => $this->nome,
-            'email' => $this->email,
-            'senha' => $this->senha,
-        ] );
-		return $this;		
-	}
-
-	//validar se um cadastro pode ser feito
-	public function validarCadastro() {
-		$valido = true;
-
-		if(strlen($this->__get('nome')) < 3) {
-			$valido = false;
-		}
-
-		if(strlen($this->__get('email')) < 3) {
-			$valido = false;
-		}
-
-		if(strlen($this->__get('senha')) < 3) {
-			$valido = false;
-		}
-
-
-		return $valido;
-	}
-
+	
 	//recuperar um usuário por e-mail
 	public function getUsuarioPorEmail() {
 		$query = "select nome, email from usuarios where email = :email";
@@ -65,7 +36,7 @@ class Usuario extends Model {
 		$query = "select id, nome, email from usuarios where email = :email and senha = :senha";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(":email", $this->__get('email'));
-		$stmt->bindValue(":senha", md5($this->__get('senha')));
+		$stmt->bindValue(":senha", $this->__get('senha'));
 		$stmt->execute();
 
 		$usuario = $stmt->fetch(\PDO::FETCH_ASSOC);

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\DB\Database;
 use MF\Model\Model;
 use \PDO;
 
@@ -58,25 +57,6 @@ class Chamado extends Model
 		$stmt->execute();
 	}
 
-	//Testando uma querrryBuilder
-
-	public function salvar()
-	{
-		$obdata = new Database('chamados');
-		$this->id = $obdata->insert([
-			'id_usuario' => $this->id_usuario,
-			'titulo' => $this->titulo,
-			'categoria' => $this->categoria,
-			'descricao' => $this->descricao,
-		]);
-
-		return true;
-
-	}
-
-	public static function getChamados($where = null, $order =null, $limit = null){
-		return(new Database('chamados'))->select($where,$order,$limit)->fetchAll(PDO::FETCH_CLASS,self::class);
-	}
 
 
 }
